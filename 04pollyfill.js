@@ -3,6 +3,7 @@
 const nums =[1,2,3,4,5]
 
 
+{
 Array.prototype.myMap = function (cb) {
     const temp = []
     
@@ -14,7 +15,7 @@ Array.prototype.myMap = function (cb) {
     }
     return temp
 }
-
+}
 // console.log(nums.myMap((item, i, arr)=>{return item+i}).map((item) => {return item+100}));
 
 //! filter pollyfill
@@ -43,16 +44,16 @@ Array.prototype.myReduce = function(cb, initialValue) {
         accumulator = accumulator ? cb(accumulator, this[i], i, this): initialValue
     }
     return accumulator
-}
+
 
 // console.log(nums.myReduce(()=>{}))
 // console.log(nums.myReduce((acc, curr, i, arr)=>{
 //     console.log(acc, curr);
 //     return acc+curr},5))
-
-console.log();
+}
 
 //! forEach pollyfill
+{
 Array.prototype.myForEach = function (cb) {
     if (typeof cb != 'function')
         throw new  TypeError(`${typeof cb} "${cb}" is not a function`)
@@ -67,8 +68,7 @@ Array.prototype.myForEach = function (cb) {
 //    console.log(num, i, arr); 
 // })
 // console.log(newnums);
-
-console.log();
+}
 
 //! interview questions based on map, filter, reduce, forEach
 
@@ -81,6 +81,7 @@ let students = [
 
 //? 1. return only names of students in capitalize form
 //! answer 1
+{
 // traditional method
 // for(let i=0; i<students.length; i++){
 //     students[i]['name'] = students[i]['name'][0].toUpperCase() + students[i]['name'].slice(1)
@@ -89,31 +90,36 @@ let students = [
 
 
 
+
 //! using map
+
 // const stuDetails = students.map((item) => {
 //     item['name'] = item.name[0].toUpperCase() + item.name.slice(1)
 //     return item
 // })
 // console.log(stuDetails);
+}
 
-console.log();
 
 //? 2. return details of those students whose marsk>60
 //! answer 2
+{
 // let stuMarksDetails = students.filter(item => item.marks>=60)
 // console.log(stuMarksDetails);
+}
 
-console.log();
 
 //? 3. return details of those whose rollNumber>25 and marks>60
 //! answer 3
+{
 // let stuDetails = students.filter(item => item.marks>=60 && item.rollNumber>=15)
 // console.log(stuDetails);
+}
 
-console.log();
 
 //? 4. return sum of marks of all sudents
 //! answer 4
+{
     //? using forEach
 // let sum = 0;
 // students.forEach( item => sum+=item.marks)
@@ -122,24 +128,26 @@ console.log();
     //? usinf reduce
 // const marksSum = students.reduce((acc, curr) => acc+curr.marks, 0)
 // console.log(marksSum);
+}
 
-console.log();
 
 //? 5. returnr only names of students whose marks>60
 //! answer 5
+{
 // const stuNames = students.filter((item) => item.marks>=60).map((item)=> item.name)
 // console.log(stuNames);
+}
 
-console.log();
 //? 6. return total marks for students with marks > 60 after 20 marks added to those who scored less than 60.
 //! answer 
+{
 const totalMarks = students.map((item) => {
     if (item.marks<60)
         item.marks = item.marks+20
     return item
 }).reduce((acc, curr) => acc+curr.marks, 0)
 console.log(totalMarks);
-
+}
 
 
 
